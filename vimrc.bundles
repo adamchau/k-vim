@@ -175,7 +175,7 @@ if count(g:bundle_groups, 'markdown')
     " Plug 'suan/vim-instant-markdown'
     " let g:instant_markdown_slow = 1
     " let g:instant_markdown_autostart = 0
-    " map <F12> :InstantMarkdownPreview<CR>
+    " map <Leader>md :InstantMarkdownPreview<CR>
 endif
 
 if count(g:bundle_groups, 'golang')
