@@ -61,7 +61,7 @@ if $FOR_NEOVIM; then
     for i in $HOME/.config/nvim/init.vim $HOME/.config/nvim; do [ -L $i ] && unlink $i ; done
 fi
 
-echo "Step2: setting up symlinks"
+echo "Step2: setting up symlinks (condarc)"
 if $FOR_VIM; then
     lnif $CURRENT_DIR/vimrc $HOME/.vimrc
     lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
@@ -71,6 +71,7 @@ if $FOR_NEOVIM; then
     lnif "$CURRENT_DIR/" "$HOME/.config/nvim"
     lnif $CURRENT_DIR/vimrc $CURRENT_DIR/init.vim
 fi
+lnif $CURRENT_DIR/.condarc $HOME/.condarc
 
 echo "Step3: update/install plugins using Vim-plug"
 system_shell=$SHELL
