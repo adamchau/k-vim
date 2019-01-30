@@ -72,6 +72,9 @@ if $FOR_NEOVIM; then
     lnif $CURRENT_DIR/vimrc $CURRENT_DIR/init.vim
 fi
 lnif $CURRENT_DIR/.condarc $HOME/.condarc
+if [ ! -d $HOME/aria2 ];then
+    mkdir $HOME/aria2
+lnif $CURRENT_DIR/aria2.conf $HOME/aria2/aria2.conf
 
 echo "Step3: update/install plugins using Vim-plug"
 system_shell=$SHELL
