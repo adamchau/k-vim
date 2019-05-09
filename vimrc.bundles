@@ -36,6 +36,7 @@ else
     Plug 'w0rp/ale'
 endif
 
+" Plug 'w0rp/ale'
 " Group dependencies, vim-snippets depends on ultisnips
 " 代码片段快速插入 (snippets中,是代码片段资源,需要学习)
 " Snippets are separated from the engine. Add this if you want them:
@@ -312,6 +313,8 @@ if has_key(g:plugs, 'syntastic')
     let g:syntastic_python_checkers=['flake8', ] " 使用pyflakes,速度比pylint快
     let g:syntastic_python_flake8_options='--ignore=E501,E225,E124,E712,E116,E131'
 
+    let g:syntastic_cpp_cpplint_exec = "cpplint"
+    let g:syntastic_cpp_checkers = ['cpplint']
     " javascript
     " let g:syntastic_javascript_checkers = ['jsl', 'jshint']
     " let g:syntastic_html_checkers=['tidy', 'jshint']
@@ -379,6 +382,8 @@ if has_key(g:plugs, 'ale')
     let g:ale_linters = {
     \   'python': ['flake8'],
     \   'javascript': ['eslint'],
+    \   'cpp': ['clang'],
+    \   'c': ['clang'],
     \}
 
     " E501 -> 120 chars
@@ -439,6 +444,7 @@ endif
     " 跳转到定义处, 分屏打开
     let g:ycm_goto_buffer_command = 'horizontal-split'
     let g:ycm_register_as_syntastic_checker = 0
+    let g:ycm_show_diagnostics_ui = 0
     " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
     nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
