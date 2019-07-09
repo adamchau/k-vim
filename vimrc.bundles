@@ -439,6 +439,7 @@ if has_key(g:plugs, 'vim-clang-format')
 	autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 	" Toggle auto formatting:
 	nmap <Leader>C :ClangFormatAutoToggle<CR>
+endif
 " }}}
 
 " ################### 自动补全 ###################
