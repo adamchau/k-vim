@@ -61,7 +61,7 @@ if $FOR_NEOVIM; then
     for i in $HOME/.config/nvim/init.vim $HOME/.config/nvim; do [ -L $i ] && unlink $i ; done
 fi
 
-echo "Step2: setting up symlinks (condarc)"
+echo "Step2: setting up symlinks (condarc, aria2, zshrc. wps-fonts)"
 if $FOR_VIM; then
     lnif $CURRENT_DIR/vimrc $HOME/.vimrc
     lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
@@ -74,8 +74,19 @@ fi
 lnif $CURRENT_DIR/.condarc $HOME/.condarc
 if [ ! -d $HOME/aria2 ];then
     mkdir $HOME/aria2
-lnif $CURRENT_DIR/aria2.conf $HOME/aria2/aria2.conf
+    lnif $CURRENT_DIR/aria2.conf $HOME/aria2/aria2.conf
 fi
+if ! [ -x "$(command -v curl)" ]; then
+    sudo apt-get install curl
+fi
+if ! [ -x "$(command -v zsh)" ]; then
+    sudo apt-get install zsh
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    lnif $CURRENT_DIR/zshrc $HOME/.zshrc
+fi
+cd wps-fonts
+sudo ./install_fonts.sh
+cd $CURRENT_DIR
 
 echo "Step3: update/install plugins using Vim-plug"
 system_shell=$SHELL
