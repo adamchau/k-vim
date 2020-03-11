@@ -40,7 +40,8 @@ endif
 " Group dependencies, vim-snippets depends on ultisnips
 " 代码片段快速插入 (snippets中,是代码片段资源,需要学习)
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'tckmn/vim-minisnip'
 
 " auto complete
 " 代码自动补全
@@ -55,6 +56,8 @@ Plug 'docunext/closetag.vim', { 'for': ['html', 'xml'] }
 " quick edit
 " 快速注释
 Plug 'scrooloose/nerdcommenter'
+
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 
 " 快速加入修改环绕字符
@@ -443,6 +446,17 @@ endif
 " }}}
 
 " ################### 自动补全 ###################
+
+" DoxygenToolkit {{{
+    "let g:DoxygenToolkit_briefTag_pre="@Synopsis      " 
+    "let g:DoxygenToolkit_paramTag_pre="@Param         " 
+    "let g:DoxygenToolkit_returnTag   ="@Returns       " 
+    "let g:DoxygenToolkit_blockHeader="============================================================================" 
+    "let g:DoxygenToolkit_blockFooter="============================================================================" 
+    let g:DoxygenToolkit_authorName="Zhao Yadong" 
+    let g:DoxygenToolkit_fileTag = "@filename "
+    let g:DoxygenToolkit_companyName = "SAIC AI LAB"
+" }}}
 
 " YouCompleteMe {{{
     "youcompleteme  默认tab  s-tab 和自动补全冲突
