@@ -1,123 +1,99 @@
 {
-  "dns" : {
-    "servers" : [
-      "localhost"
-    ]
+  "log": {
+    "error": "",
+    "loglevel": "info",
+    "access": ""
   },
-  "inbounds" : [
+  "inbounds": [
     {
-      "listen" : "127.0.0.1",
-      "port" : 1080,
-      "protocol" : "socks",
-      "tag" : "socksinbound",
-      "settings" : {
-        "auth" : "noauth",
-        "udp" : false,
-        "ip" : "127.0.0.1"
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "udp": false,
+        "auth": "noauth"
+      },
+      "port": "1080"
+    },
+    {
+      "listen": "127.0.0.1",
+      "protocol": "http",
+      "settings": {
+        "timeout": 360
+      },
+      "port": "1087"
+    }
+  ],
+  "outbounds": [
+    {
+      "mux": {
+        "enabled": false,
+        "concurrency": 8
+      },
+      "protocol": "vless",
+      "streamSettings": {
+        "tcpSettings": {
+          "header": {
+            "type": "none"
+          }
+        },
+        "xtlsSettings": {
+          "allowInsecure": true
+        },
+        "security": "xtls",
+        "network": "tcp"
+      },
+      "tag": "proxy",
+      "settings": {
+        "vnext": [
+          {
+            "address": "23.105.206.28",
+            "users": [
+              {
+                "encryption": "none",
+                "id": "d63e2862-efcf-4c2e-8cc2-fcdcb239c734",
+                "level": 8,
+                "flow": "xtls-rprx-direct"
+              }
+            ],
+            "port": 443
+          }
+        ]
       }
     },
     {
-      "listen" : "127.0.0.1",
-      "port" : 1081,
-      "protocol" : "http",
-      "tag" : "httpinbound",
-      "settings" : {
-        "timeout" : 0
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP",
+        "redirect": "",
+        "userLevel": 0
       }
-    }
-  ],
-  "outbounds" : [
+    },
     {
-      "sendThrough" : "0.0.0.0",
-      "mux" : {
-        "enabled" : false,
-        "concurrency" : 8
-      },
-      "protocol" : "vmess",
-      "settings" : {
-        "vnext" : [
-          {
-            "address" : "www.chushenyuchihuo.tk",
-            "users" : [
-              {
-                "id" : "6c28b314-49d3-4819-b20d-24889a667f66",
-                "alterId" : 64,
-                "security" : "auto",
-                "level" : 0
-              }
-            ],
-            "port" : 18888
-          }
-        ]
-      },
-      "tag" : "wulabing_www.chushenyuchihuo.tk",
-      "streamSettings" : {
-        "wsSettings" : {
-          "path" : "\/81312d7a\/",
-          "headers" : {
-            "Host" : "www.chushenyuchihuo.tk"
-          }
-        },
-        "quicSettings" : {
-          "key" : "",
-          "header" : {
-            "type" : "none"
-          },
-          "security" : "none"
-        },
-        "tlsSettings" : {
-          "allowInsecure" : false,
-          "alpn" : [
-            "http\/1.1"
-          ],
-          "serverName" : "www.chushenyuchihuo.tk",
-          "allowInsecureCiphers" : false
-        },
-        "sockopt" : {
-
-        },
-        "httpSettings" : {
-          "path" : "",
-          "host" : [
-            ""
-          ]
-        },
-        "tcpSettings" : {
-          "header" : {
-            "type" : "none"
-          }
-        },
-        "kcpSettings" : {
-          "header" : {
-            "type" : "none"
-          },
-          "mtu" : 1350,
-          "congestion" : false,
-          "tti" : 20,
-          "uplinkCapacity" : 5,
-          "writeBufferSize" : 1,
-          "readBufferSize" : 1,
-          "downlinkCapacity" : 20
-        },
-        "security" : "tls",
-        "network" : "ws"
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "none"
+        }
       }
     }
   ],
-  "routing" : {
-    "name" : "all_to_main",
-    "domainStrategy" : "AsIs",
-    "rules" : [
-      {
-        "type" : "field",
-        "outboundTag" : "wulabing_www.chushenyuchihuo.tk",
-        "port" : "0-65535"
-      }
-    ]
+  "dns": {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com"
+      },
+      "servers": [
+        "1.1.1.1"
+      ]
+    }
   },
-  "log" : {
-    "error" : "\/var\/folders\/s3\/k_y1ldyn6xl6l7x5lwp9llwr0000gp\/T\/cenmrev.v2rayx.log\/error.log",
-    "loglevel" : "none",
-    "access" : "\/var\/folders\/s3\/k_y1ldyn6xl6l7x5lwp9llwr0000gp\/T\/cenmrev.v2rayx.log\/access.log"
-  }
+  "routing": {
+    "settings": {
+      "domainStrategy": "AsIs",
+      "rules": []
+    }
+  },
+  "transport": {}
 }
