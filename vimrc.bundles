@@ -1,3 +1,6 @@
+" File  : vimrc.bundles
+" Author: Zhao Ya Dong <zhaoyadong@saicmotor.com>
+" Date  : 2021.04.28
 " ==========================================
 " bundle 插件管理和配置项
 " ==========================================
@@ -42,6 +45,7 @@ endif
 " Snippets are separated from the engine. Add this if you want them:
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tckmn/vim-minisnip'
+Plug 'alpertuna/vim-header'
 
 " auto complete
 " 代码自动补全
@@ -445,17 +449,35 @@ if has_key(g:plugs, 'vim-clang-format')
 endif
 " }}}
 
+" ################### Vim-header ###################
+"
+" vim-header{{{
+if has_key(g:plugs, 'vim-header')
+    let g:header_auto_add_header = 1
+    let g:header_field_filename = 1
+    let g:header_field_modified_timestamp = 0
+    let g:header_field_modified_by = 0
+    let g:header_field_author = 'Zhao Ya Dong'
+    let g:header_field_author_email = 'zhaoyadong@saicmotor.com'
+    let g:header_field_timestamp_format = '%Y.%m.%d'
+    let g:header_file_copyright = 'SAIC AI LAB Copyright'
+    map <F7> :AddHeader<CR>
+endif
+" }}}
+"
+"
 " ################### 自动补全 ###################
-
 " DoxygenToolkit {{{
-    "let g:DoxygenToolkit_briefTag_pre="@Synopsis      " 
-    "let g:DoxygenToolkit_paramTag_pre="@Param         " 
-    "let g:DoxygenToolkit_returnTag   ="@Returns       " 
-    "let g:DoxygenToolkit_blockHeader="============================================================================" 
-    "let g:DoxygenToolkit_blockFooter="============================================================================" 
-    let g:DoxygenToolkit_authorName="Zhao Yadong" 
+if has_key(g:plugs, 'DoxygenToolkit')
+    "let g:DoxygenToolkit_briefTag_pre="@Synopsis      "
+    "let g:DoxygenToolkit_paramTag_pre="@Param         "
+    "let g:DoxygenToolkit_returnTag   ="@Returns       "
+    "let g:DoxygenToolkit_blockHeader="============================================================================"
+    "let g:DoxygenToolkit_blockFooter="============================================================================"
+    let g:DoxygenToolkit_authorName="Zhao Yadong"
     let g:DoxygenToolkit_fileTag = "@filename "
     let g:DoxygenToolkit_companyName = "SAIC AI LAB"
+endif
 " }}}
 
 " YouCompleteMe {{{
