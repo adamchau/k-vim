@@ -1,0 +1,4 @@
+#ifndef {{+INCLUDE_GURAD+}}
+#define {{+~\~1+}}
+
+#endif

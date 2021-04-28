@@ -481,6 +481,7 @@ endif
 " }}}
 
 " YouCompleteMe {{{
+if has_key(g:plugs, 'YouCompleteMe')
     "youcompleteme  默认tab  s-tab 和自动补全冲突
     "let g:ycm_key_list_select_completion=['<c-n>']
     let g:ycm_confirm_extra_conf = 0
@@ -527,10 +528,12 @@ endif
         \ 'tagbar' : 1,
         \ 'gitcommit' : 1,
         \}
+endif
 " }}}
 
 
 " ultisnips {{{
+if has_key(g:plugs, 'ultisnips')
     let g:UltiSnipsExpandTrigger       = "<tab>"
     let g:UltiSnipsJumpForwardTrigger  = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -559,6 +562,7 @@ endif
     inoremap <c-j> <c-r>=g:JInYCM()<cr>
     au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwordTrigger . " <C-R>=g:KInYCM()<cr>"
     let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
+endif
 " }}}
 
 
