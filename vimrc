@@ -1,5 +1,10 @@
+" CopyRight (c) 2021 SAIC AI LAB, all rights reserved.
+" File              : vimrc
+" Author            : Zhao Ya Dong <zhaoyadong@saicmotor.com>
+" Date              : 2021.04.29
+" Last Modified Date: 2021.04.29
 "==========================================
-" Author:  wklken
+" Author            :  wklken
 " Version: 9.1
 " Email: wklken@yeah.net
 " BlogPost: http://www.wklken.me
@@ -10,7 +15,7 @@
 "       -> Initial Plugin 加载插件
 "       -> General Settings 基础设置
 "       -> Display Settings 展示/排版等界面格式设置
-"       -> FileEncode Settings 文件编码设置
+"       -> File              : vimrc
 "       -> Others 其它配置
 "       -> HotKey Settings  自定义快捷键
 "       -> FileType Settings  针对文件类型的设置
@@ -599,10 +604,12 @@ function! AutoSetFileHead()
     endif
 
     "如果文件类型为python
-    if &filetype == 'python'
-        " call setline(1, "\#!/usr/bin/env python")
-        " call append(1, "\# encoding: utf-8")
-        call setline(1, "\# -*- coding: utf-8 -*-")
+    if !has_key(g:plugs, 'vim-header')
+        if &filetype == 'python'
+          " call setline(1, "\#!/usr/bin/env python3")
+          " call append(1, "\# encoding: utf-8")
+          call setline(1, "\# -*- coding: utf-8 -*-")
+        endif
     endif
 
     normal G

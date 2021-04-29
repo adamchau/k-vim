@@ -453,14 +453,15 @@ endif
 "
 " vim-header{{{
 if has_key(g:plugs, 'vim-header')
+    let g:header_max_size = 20
     let g:header_auto_add_header = 1
     let g:header_field_filename = 1
-    let g:header_field_modified_timestamp = 0
+    let g:header_field_modified_timestamp = 1
     let g:header_field_modified_by = 0
     let g:header_field_author = 'Zhao Ya Dong'
     let g:header_field_author_email = 'zhaoyadong@saicmotor.com'
     let g:header_field_timestamp_format = '%Y.%m.%d'
-    let g:header_file_copyright = 'SAIC AI LAB Copyright'
+    let g:header_field_copyright = 'CopyRight (c) 2021 SAIC AI LAB, all rights reserved.'
     map <F7> :AddHeader<CR>
 endif
 " }}}
