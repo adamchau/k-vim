@@ -1,6 +1,11 @@
-" File  : vimrc.bundles
-" Author: Zhao Ya Dong <zhaoyadong@saicmotor.com>
-" Date  : 2021.04.28
+" CopyRight (c) 2021 SAIC AI LAB, all rights reserved.
+" File              : vimrc.bundles
+" Author            : Zhao Ya Dong <zhaoyadong@saicmotor.com>
+" Date              : 2021.09.01
+" Last Modified Date: 2021.09.01
+" File              : vimrc.bundles
+" Author            : Zhao Ya Dong <zhaoyadong@saicmotor.com>
+" Date              : 2021.04.28
 " ==========================================
 " bundle 插件管理和配置项
 " ==========================================
@@ -459,9 +464,9 @@ if has_key(g:plugs, 'vim-header')
     let g:header_field_modified_timestamp = 1
     let g:header_field_modified_by = 0
     let g:header_field_author = 'Zhao Ya Dong'
-    let g:header_field_author_email = 'zhaoyadong@saicmotor.com'
+    let g:header_field_author_email = '421564807@qq.com'
     let g:header_field_timestamp_format = '%Y.%m.%d'
-    let g:header_field_copyright = 'CopyRight (c) 2021 SAIC AI LAB, all rights reserved.'
+    let g:header_field_copyright = 'CopyRight (c) 2021 CPIC DIR, all rights reserved.'
     map <F7> :AddHeader<CR>
 endif
 " }}}
